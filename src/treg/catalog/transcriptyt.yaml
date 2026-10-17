@@ -6,7 +6,8 @@ source:
   curated: '2026-10-17'
 pricing_url: https://transcript-yt.com/#pricing
 limits: >-
-  200 requests/minute per key on every plan. Credits: 100 free once, then monthly plans from $3 for
+  Requests per minute per key by plan (the free plan allows 10; paid plans 200). Uncached search and
+  playlist lookups are also capped at 200 a day per account (429 RATE_LIMITED). Credits: 100 free once, then monthly plans from $3 for
   1,000 credits ($0.003 a credit) to $79 for 50,000 ($0.00158 a credit); top-ups $2.50 per 1,000 on
   any paid plan. Failed requests are never billed. Search, playlist listing, caption-language lists
   and usage are free.
@@ -49,12 +50,12 @@ endpoints:
       currency: credit
       per: 1
       unit: call
-      source: docs
+      source: observed
       source_url: https://transcript-yt.com/openapi.json
       checked: '2026-10-17'
-      confidence: documented
+      confidence: verified
       note: "1 credit for a video with captions. A video without captions (mode=auto or ai) is AI-transcribed at
-        1 credit per started minute of audio. Failed requests are free. The X-Credits-Charged header settles
+        1 credit per started minute of audio. Failed requests are free. Observed live 2026-10-17: X-Credits-Charged 1 for dQw4w9WgXcQ; AI-transcription price unobserved. The X-Credits-Charged header settles
         the actual charge."
     docs_url: https://transcript-yt.com/docs
     added: '2026-10-17'
@@ -85,13 +86,13 @@ endpoints:
       currency: credit
       per: 1
       unit: item
-      source: docs
+      source: observed
       source_url: https://transcript-yt.com/openapi.json
       checked: '2026-10-17'
-      confidence: documented
+      confidence: verified
       note: "Each video is billed like a single /v1/transcript call: 1 credit with captions, 1 credit per started
-        minute when AI-transcribed. Failed videos are free. The X-Credits-Charged header settles the actual
-        charge."
+        minute when AI-transcribed. Failed videos are free. Observed live 2026-10-17: one captioned video charged 1 credit (balance
+        delta); this route sends no X-Credits-Charged header, so it settles at the per-video price."
     docs_url: https://transcript-yt.com/docs
     added: '2026-10-17'
   - id: transcriptyt.youtube.video.summary
@@ -116,13 +117,13 @@ endpoints:
       currency: credit
       per: 1
       unit: call
-      source: docs
+      source: observed
       source_url: https://transcript-yt.com/openapi.json
       checked: '2026-10-17'
-      confidence: documented
+      confidence: verified
       note: "1 credit for the transcript plus 1 for the summary on videos up to about 25 minutes (and cached
         summaries); about 1 more per further 45 minutes. AI transcription of a caption-less video adds 1 credit
-        per started minute. Failed requests are free. The X-Credits-Charged header settles the actual charge."
+        per started minute. Failed requests are free. Observed live 2026-10-17: X-Credits-Charged 2 for dQw4w9WgXcQ. The X-Credits-Charged header settles the actual charge."
     docs_url: https://transcript-yt.com/docs
     added: '2026-10-17'
   - id: transcriptyt.youtube.video.captions.languages
@@ -144,10 +145,10 @@ endpoints:
       value: 0
       currency: USD
       unit: call
-      source: docs
+      source: observed
       source_url: https://transcript-yt.com/openapi.json
       checked: '2026-10-17'
-      confidence: documented
+      confidence: verified
     docs_url: https://transcript-yt.com/docs
     added: '2026-10-17'
   - id: transcriptyt.youtube.channel.videos
@@ -220,9 +221,9 @@ endpoints:
       value: 0
       currency: USD
       unit: call
-      source: docs
+      source: observed
       source_url: https://transcript-yt.com/openapi.json
       checked: '2026-10-17'
-      confidence: documented
+      confidence: verified
     docs_url: https://transcript-yt.com/docs
     added: '2026-10-17'

@@ -126,7 +126,8 @@ _RATE_LIMITS: dict[str, dict] = {
     "sixtyfour": {"limit": 60, "window_s": 60, "source": "policy"},
     # The allowance is independent per endpoint; this is the fallback for uncatalogued calls.
     "blitzapi": {"limit": 10, "window_s": 1, "source": "policy"},
-    # Every plan allows 200 requests a minute per key; a 429 carries Retry-After.
+    # Paid plans allow 200 requests a minute per key (the free plan 10); a 429 carries Retry-After.
+    # Uncached search and playlist lookups are separately capped at 200 a day per account.
     "transcriptyt": {"limit": 200, "window_s": 60, "source": "docs"},
     "adyntel": {"limit": 5, "window_s": 1, "source": "docs"},
     # HLR Lookup caps each customer at 210 concurrent requests and throttles per telephone
