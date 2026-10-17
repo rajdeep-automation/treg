@@ -54,7 +54,8 @@ endpoints:
       checked: '2026-10-17'
       confidence: documented
       note: "1 credit for a video with captions. A video without captions (mode=auto or ai) is AI-transcribed at
-        1 credit per started minute of audio. Failed requests are free."
+        1 credit per started minute of audio. Failed requests are free. The X-Credits-Charged header settles
+        the actual charge."
     docs_url: https://transcript-yt.com/docs
     added: '2026-10-17'
   - id: transcriptyt.youtube.videos.captions
@@ -83,13 +84,14 @@ endpoints:
       value: 1
       currency: credit
       per: 1
-      unit: video
+      unit: item
       source: docs
       source_url: https://transcript-yt.com/openapi.json
       checked: '2026-10-17'
       confidence: documented
       note: "Each video is billed like a single /v1/transcript call: 1 credit with captions, 1 credit per started
-        minute when AI-transcribed. Failed videos are free."
+        minute when AI-transcribed. Failed videos are free. The X-Credits-Charged header settles the actual
+        charge."
     docs_url: https://transcript-yt.com/docs
     added: '2026-10-17'
   - id: transcriptyt.youtube.video.summary
@@ -120,7 +122,7 @@ endpoints:
       confidence: documented
       note: "1 credit for the transcript plus 1 for the summary on videos up to about 25 minutes (and cached
         summaries); about 1 more per further 45 minutes. AI transcription of a caption-less video adds 1 credit
-        per started minute. Failed requests are free."
+        per started minute. Failed requests are free. The X-Credits-Charged header settles the actual charge."
     docs_url: https://transcript-yt.com/docs
     added: '2026-10-17'
   - id: transcriptyt.youtube.video.captions.languages
